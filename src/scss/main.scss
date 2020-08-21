@@ -1,4 +1,6 @@
 @import "components/list";
+@import "@splidejs/splide/dist/css/splide.min.css";
+@import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 
 body {
   background-color: yellow;
@@ -13,6 +15,8 @@ h1 {
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 20px;
+
+  mask-image: url(https://mdn.mozillademos.org/files/12676/star.svg);
 
   span {
     color: blue;

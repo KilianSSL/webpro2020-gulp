@@ -9,11 +9,13 @@
   "author": "",
   "license": "ISC",
   "browserslist": [
-    "defaults",
-    "IE 10"
+    "last 2 version"
   ],
   "dependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@splidejs/splide": "^2.4.10",
     "bootstrap": "^4.4.1",
+    "gulp-cssimport": "^7.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {

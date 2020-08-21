@@ -11,13 +11,24 @@ const browserSync = require("browser-sync").create();
 const rollup = require("gulp-better-rollup");
 const babel = require("rollup-plugin-babel");
 const resolveNodeModules = require("rollup-plugin-node-resolve");
+const cjs = require("@rollup/plugin-commonjs");
+const cssimport = require("gulp-cssimport");
 
 let isProductionBuild = false;
 
 function runSass() {
   return gulp
     .src("src/scss/**/*.scss")
-    .pipe(sass())
+    .pipe(
+      sass({
+        includePaths: ["node_modules"],
+      })
+    )
+    .pipe(
+      cssimport({
+        includePaths: ["node_modules"],
+      })
+    )
     .pipe(autoprefixer())
     .pipe(gulpif(isProductionBuild, cssnano()))
     .pipe(
@@ -45,7 +56,7 @@ function bundleJs() {
     .pipe(
       rollup(
         {
-          plugins: [babel(), resolveNodeModules()],
+          plugins: [babel(), resolveNodeModules(), cjs()],
         },
         { format: "cjs" }
       )
